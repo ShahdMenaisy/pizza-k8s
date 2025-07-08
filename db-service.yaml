@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: my-mongo
+  namespace: pizza
   labels:
     app: my-mongo
 spec:
