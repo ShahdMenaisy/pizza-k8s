@@ -30,5 +30,5 @@ spec:
       volumes:
         - name: mongo-storage
           persistentVolumeClaim:
-            claimName: mongo-pvc  # <-- FIXED indentation
+            claimName: mongo-pvc  
 
