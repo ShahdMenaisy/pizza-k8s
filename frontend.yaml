@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: pizza-app-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pizza-app-frontend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 10
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 120
+  template:
+    metadata:
+      labels:
+        app: pizza-app-frontend
+    spec:
+      containers:
+      - name: frontend-container
+        image: shahdabdulaziz/pizza-app-frontend2
+        ports: 
+        - containerPort: 80 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector: 
+    app: pizza-app-frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 32700   
+  type: NodePort
+---
