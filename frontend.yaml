@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend-deployment
+  namespace: pizza
   labels:
     app: pizza-app-frontend
 spec:
@@ -33,6 +34,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
+  namespace: pizza
 spec:
   selector: 
     app: pizza-app-frontend
