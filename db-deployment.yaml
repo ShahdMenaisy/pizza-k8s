@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-mongo-new
+  namespace: pizza
 spec:
   replicas: 1
   selector:
@@ -30,5 +31,5 @@ spec:
       volumes:
         - name: mongo-storage
           persistentVolumeClaim:
-            claimName: mongo-pvc  
+            claimName: pizza-pvc  
 
