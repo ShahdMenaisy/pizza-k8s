@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
+  namespace: pizza
   labels:
     app: pizza-app-backend
 spec:
@@ -45,7 +46,7 @@ spec:
     port: 3000
     targetPort: 3000
     nodePort: 32702   
-  type: NodePort
+  type: LoadBalancer
 
  
 ---
